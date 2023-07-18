@@ -33,6 +33,16 @@ public class PlayerController : MonoBehaviour
     Vector3 localCameraRot;
 
     /// <summary>
+    /// True if the player can jump
+    /// </summary>
+    private bool canJump;
+
+    /// <summary>
+    /// The amount of upward force to apply to the player when jumping
+    /// </summary>
+    public float jumpForce;
+
+    /// <summary>
     /// The movement speed of the player per second.
     /// </summary>
     public float baseMoveSpeed = 5f;
@@ -75,6 +85,21 @@ public class PlayerController : MonoBehaviour
         transform.position += ((forwardDirection * movementInput.y + rightDirection * movementInput.x) * baseMoveSpeed * Time.deltaTime );
     }
 
+    /// <summary>
+    /// Called when the Jump action is detected.
+    /// </summary>
+    
+    void OnJump()
+    {
+        if (canJump == true)
+        {
+            this.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+
+     
+
 
     /// <summary>
     /// Called when the Look action is detected.
@@ -108,10 +133,32 @@ public class PlayerController : MonoBehaviour
         //Player will move along with the camera direction
         transform.rotation = Quaternion.Euler(0,localCameraRot.y,0);
         
-        
-
-        
     }
+
+    /// <summary>
+    /// Called when a collision is detected
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter(Collision collision)
+    {   
+        //Player can only jump while touching the ground
+        if (collision.gameObject.tag == "Floor")
+        {
+            canJump = true;                
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+
+        //Player can only jump while touching the ground
+        if (collision.gameObject.tag == "Floor")
+        {
+            canJump = false;
+        }
+    }
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -124,6 +171,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(canJump);
         Movement();
         Rotation();
     }

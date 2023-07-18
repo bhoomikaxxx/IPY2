@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca38bc79b51673a4eb2fa785423a45fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpForce: 3
   baseMoveSpeed: 5
   rotationSpeed: 60
   playerCamera: {fileID: 1577399055}
@@ -351,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+  m_Actions: {fileID: -944628639613478452, guid: 0d054c4f902e80c4bb893fcbecf4589f,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
@@ -498,7 +499,7 @@ GameObject:
   - component: {fileID: 1484283453}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
