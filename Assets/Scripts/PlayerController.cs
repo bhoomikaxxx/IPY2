@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("Hi");
+        Debug.Log("HI");
         
     }
 
