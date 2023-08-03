@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class ParrotEnemy : MonoBehaviour
 {
+    //UPDATE 
+
     public NavMeshAgent agent;
 
     public Transform player;
